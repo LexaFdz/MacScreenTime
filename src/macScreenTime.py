@@ -39,6 +39,12 @@ def get_active_app_name():
 
 # print(get_active_app_name())
 
+def url_to_name(url):
+    string_list = url.split('/')
+    if string_list[2].startswith('www.'):
+        string_list[2] = string_list[2][4:]
+    return string_list[2]
+
 
 try:
     """
@@ -77,7 +83,9 @@ try:
             #
             #     tabs[win_num] = zip(urls, titles)
 
-            pprint(result)
+            url = result.stringValue()
+
+            pprint(url_to_name(url))
 
 
         #     new_app_name = url_to_name()
