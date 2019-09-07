@@ -1,6 +1,38 @@
 [
     {
         "app_name": "algo inventado",
-        "date": "-1 day, 23:59:59.997364"
+        "date": "-1 day, 23:59:59.997694"
+    },
+    {
+        "app_name": "iTerm2",
+        "date": "0:00:03.009755"
+    },
+    {
+        "app_name": "Safari",
+        "date": "0:00:04.294217"
+    },
+    {
+        "app_name": "iTerm2",
+        "date": "0:00:50.077809"
+    },
+    {
+        "app_name": "Safari",
+        "date": "0:00:02.050101"
+    },
+    {
+        "app_name": "iTerm2",
+        "date": "0:00:20.028778"
+    },
+    {
+        "app_name": "PyCharm",
+        "date": "0:00:03.006118"
+    },
+    {
+        "app_name": "WhatsApp",
+        "date": "0:00:06.006827"
+    },
+    {
+        "app_name": "PyCharm",
+        "date": "0:00:36.051954"
     }
 ]

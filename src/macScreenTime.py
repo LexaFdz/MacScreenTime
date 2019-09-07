@@ -1,4 +1,5 @@
 # Requiere ---> pip3 install PyObjC
+# Not usable inside venv? weird
 import time
 import json
 from datetime import datetime
@@ -55,28 +56,28 @@ try:
 
         if 'Safari' in new_app_name:
             # create applescript code object
-            s = NSAppleScript.alloc().initWithSource_(
-                'tell app "Safari" to {URL,name} of tabs of windows'
+            s = NSAppleScript.alloc().initWithSource_( # 'tell app "Safari" to {URL,name} of tabs of windows'
+                "tell application \"Safari\" to return URL of front document as string"
             )
             # execute AS obj, get return value
             result,_ = s.executeAndReturnError_(None)
 
             # find number of tabs based on number of groups in the URL set
-            num_windows = result.descriptorAtIndex_(1).numberOfItems()
+            # num_windows = result.descriptorAtIndex_(1).numberOfItems()
 
             # create a simple dictionary
-            tabs = dict(('window {0:}'.format(win_num), []) for win_num in range(1, num_windows + 1))
+            # tabs = dict(('window {0:}'.format(win_num), []) for win_num in range(1, num_windows + 1))
 
-            for page_idx, win_num in enumerate(tabs, start=1):
-                urls = [result.descriptorAtIndex_(1).descriptorAtIndex_(page_idx).descriptorAtIndex_(tab_num).stringValue()
-                        for tab_num in range(1, result.descriptorAtIndex_(1).descriptorAtIndex_(page_idx).numberOfItems() + 1)]
+            # for page_idx, win_num in enumerate(tabs, start=1):
+            #     urls = [result.descriptorAtIndex_(1).descriptorAtIndex_(page_idx).descriptorAtIndex_(tab_num).stringValue()
+            #             for tab_num in range(1, result.descriptorAtIndex_(1).descriptorAtIndex_(page_idx).numberOfItems() + 1)]
+            #
+            #     titles = [result.descriptorAtIndex_(2).descriptorAtIndex_(page_idx).descriptorAtIndex_(tab_num).stringValue().encode('ascii', 'xmlcharrefreplace')
+            #               for tab_num in range(1, result.descriptorAtIndex_(1).descriptorAtIndex_(page_idx).numberOfItems() + 1)]
+            #
+            #     tabs[win_num] = zip(urls, titles)
 
-                titles = [result.descriptorAtIndex_(2).descriptorAtIndex_(page_idx).descriptorAtIndex_(tab_num).stringValue().encode('ascii', 'xmlcharrefreplace')
-                          for tab_num in range(1, result.descriptorAtIndex_(1).descriptorAtIndex_(page_idx).numberOfItems() + 1)]
-
-                tabs[win_num] = zip(urls, titles)
-
-            pprint(tabs)
+            pprint(result)
 
 
         #     new_app_name = url_to_name()
