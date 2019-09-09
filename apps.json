@@ -1,22 +1,14 @@
 [
     {
         "app_name": "algo inventado",
-        "date": "-1 day, 23:59:59.997627"
+        "date": "-1 day, 23:59:59.997265"
     },
     {
         "app_name": "iTerm2",
-        "date": "0:00:02.012909"
+        "date": "0:00:04.017916"
     },
     {
-        "app_name": "Safari",
-        "date": "0:00:03.218384"
-    },
-    {
-        "app_name": "iTerm2",
-        "date": "0:00:08.012175"
-    },
-    {
-        "app_name": "Safari",
-        "date": "0:00:01.025940"
+        "app_name": "PyCharm",
+        "date": "0:00:01.008156"
     }
 ]

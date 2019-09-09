@@ -40,10 +40,23 @@ def get_active_app_name():
 # print(get_active_app_name())
 
 def url_to_name(url):
+    """
+    Convertimos el string de URL en solo la pagina principal, quitando lo especifico
+    :param url:
+    :return: string in a dictionary
+    """
     string_list = url.split('/')
     if string_list[2].startswith('www.'):
         string_list[2] = string_list[2][4:]
     return string_list[2]
+
+
+def convert_timedelta(duration):
+    days, seconds = duration.days, duration.seconds
+    hours = days * 24 + seconds // 3600
+    minutes = (seconds % 3600) // 60
+    seconds = (seconds % 60)
+    return hours, minutes, seconds
 
 
 try:
@@ -67,6 +80,8 @@ try:
             )
             # execute AS obj, get return value
             result,_ = s.executeAndReturnError_(None)
+
+            time.sleep(1)
 
             # find number of tabs based on number of groups in the URL set
             # num_windows = result.descriptorAtIndex_(1).numberOfItems()
@@ -98,8 +113,15 @@ try:
             Calculamos el tiempo que duro en la app que este de focus.
             '''
             time_on_app = current_time-start_time
+            '''
+            Hacemos el tiempo en formato datetime.timedelta manejable para nosotros con la funcion convert_timedelta.
+            '''
+            hours, minutes, seconds = convert_timedelta(time_on_app)
+
             print(previous_app_name)
-            print(str(time_on_app))
+            print('{} minutes, {} seconds'.format(minutes, seconds))
+            # print(str(time_on_app))
+
 
             app_list.append(serialize())
 
